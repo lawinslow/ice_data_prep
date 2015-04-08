@@ -46,6 +46,7 @@ arai1 = filter(nsidc_suwa,
 								rule_year >= 1443, 
 								rule_year <= 1993, 
 							  rule_year != 1952,
+							 	rule_year != 1976,
 								lakecode=="ARAI1")
 
 corrected_data = rbind(corrected_data, arai1)
@@ -57,6 +58,14 @@ wsta1 = filter(nsidc_suwa,
 							  lakecode == "WSTA1")
 
 corrected_data = rbind(corrected_data, wsta1)
+
+#Rule/correction "1976 use WSTA1 not ARAI1; "
+wsta1 = filter(nsidc_suwa, 
+							 rule_year == 1976,
+							 lakecode == "WSTA1")
+
+corrected_data = rbind(corrected_data, wsta1)
+
 
 #order by year
 corrected_data = arrange(corrected_data, rule_year)
